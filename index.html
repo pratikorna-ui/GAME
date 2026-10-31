@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BOBA CLUB 🧋</title>
+<style>
+:root{--green:#3c6550;--wall:#eee9dc}
+*{box-sizing:border-box}
+body{margin:0;background:#fbfaf6;color:#304d41;font:15px Tahoma,Arial,sans-serif}
+button{font:inherit;cursor:pointer;color:inherit}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible{outline:3px solid #dca88b;outline-offset:3px}
+header{background:#fffefa;border-bottom:1px solid #e5e7dc;padding:22px 6%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font:bold 29px Arial;letter-spacing:-1.5px}
+.logo span{font-weight:400}.logo b{color:#95aa79;margin-left:8px}
+nav{display:flex;gap:20px}
+nav button{background:none;border:0;font-size:13px;padding:8px 0}
+nav button.active{border-bottom:2px solid var(--green);font-weight:bold}
+.wallet{background:#f0f1e7;padding:11px 16px;border-radius:30px;white-space:nowrap}
+main{max-width:1150px;margin:auto;padding:35px 24px}
+.eyebrow{font:10px Arial;letter-spacing:2px;color:#89957d}
+h1{font-size:32px;margin:13px 0}
+h1 span{color:#8b9b7f}
+.subtitle{color:#8a9382;font-size:13px;margin-bottom:28px;line-height:1.8}
+.layout{display:grid;grid-template-columns:1fr 310px;gap:22px}
+.cafe{border:1px solid #e1dfd0;border-radius:18px;overflow:hidden;background:var(--wall)}
+.scene-top{padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
+.pill{background:#fffdf3;padding:8px 12px;border-radius:20px;font:10px Arial;letter-spacing:1px}
+#sound{background:none;border:1px solid #cccdbd;border-radius:50%;width:30px;height:30px}
+.scene{height:290px;position:relative;overflow:hidden}
+.window{position:absolute;left:30px;top:18px;width:145px;height:150px;background:#d2dfce;border:9px solid #faf7e9;border-radius:80px 80px 0 0;overflow:hidden}
+.window:before{content:"";position:absolute;width:36px;height:36px;background:#f3d996;border-radius:50%;top:25px;left:23px}
+.window:after{content:"";position:absolute;width:220px;height:100px;top:90px;left:-40px;background:#9fb696;border-radius:50%}
+.sign{position:absolute;top:20px;left:37%;font:italic 26px Georgia;color:#708063}
+.shelf{position:absolute;right:25px;top:125px;border-bottom:7px solid #bc9d77;font-size:27px}
+.plant{position:absolute;bottom:68px;left:20px;font-size:65px}
+.customer{position:absolute;left:48%;bottom:65px;width:95px;height:145px}
+.hair{position:absolute;top:16px;left:4px;width:88px;height:105px;background:#594936;border-radius:50% 50% 20% 20%}
+.face{position:absolute;top:35px;left:17px;width:65px;height:65px;background:#efc3a3;border-radius:40% 40% 45% 45%;text-align:center;padding-top:21px;color:#594936;font:21px Arial}
+.face span{display:block;font-size:17px;margin-top:-4px}
+.shirt{position:absolute;bottom:0;width:100px;height:53px;background:#829d81;border-radius:40px 40px 0 0}
+.speech{position:absolute;bottom:150px;left:-100px;width:240px;background:#fffdf3;padding:12px;border-radius:12px 12px 0 12px;font-size:11px;text-align:center;box-shadow:0 3px 12px #5551;z-index:2}
+.counter{position:absolute;bottom:0;width:100%;height:77px;border-top:12px solid #977758;background:#c9a77f;text-align:center;color:#796245;padding:10px;font:bold 22px Arial}
+.counter small{display:block;font-size:6px;letter-spacing:2px;margin-top:5px}
+.cup-decor{position:absolute;bottom:78px;left:33%;font-size:40px}
+.register{position:absolute;right:25px;bottom:76px;font-size:40px}
+.scene-bottom{padding:15px 20px;background:#f8f7ef;font-size:10px;color:#8b967e;display:flex;justify-content:space-between}
+.panel,.bench,.shop-card,.help{background:#fffefa;border:1px solid #e1e5d8;border-radius:16px;padding:22px}
+h2{font-size:18px;margin:0}
+.timer{display:flex;align-items:center;justify-content:space-between;background:#f3f1e7;padding:13px 16px;border-radius:9px;margin:20px 0;font-size:12px;color:#8a957c}
+.timer strong{font:bold 27px Arial;color:#304d41}
+.ticket{display:flex;gap:14px;align-items:center;border-bottom:1px dashed #dddcca;padding-bottom:18px}
+.ticket-icon{font-size:38px;background:#f5e7da;border-radius:12px;padding:10px}
+.ticket small{font-size:10px;color:#9b9e8e}
+.ticket h3{font-size:16px;margin:8px 0}
+.ticket p{font-size:12px;color:#8b967f;margin:0}
+.stats{display:flex;justify-content:space-between;margin:20px 0}
+.stats small{display:block;font-size:11px;color:#8d9782;margin-bottom:8px}
+.stats strong{font-size:23px}
+.primary{background:var(--green);color:white;border:0;border-radius:8px;padding:13px 18px;width:100%}
+.primary:hover{filter:brightness(.92)}
+.hint{font-size:10px;color:#a0a58f;text-align:center;line-height:1.7}
+.bench{margin-top:22px}
+.bench h2{margin:8px 0 22px}
+.bench-grid{display:grid;grid-template-columns:1fr 1fr 170px;gap:22px}
+.ingredients h3{font-size:12px;font-weight:400;margin:0 0 12px}
+.ingredients h3 span{color:#a2ac92;margin-right:8px}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.choice{display:flex;flex-direction:column;align-items:center;gap:9px;background:#fbfaf6;border:1px solid #e5e5d9;border-radius:9px;padding:14px 4px;font-size:11px}
+.choice:hover{border-color:#839778}
+.choice.selected{border-color:#678369;background:#ecf0e5;box-shadow:0 0 0 1px #678369}
+.choice .emoji{font-size:27px}
+.choice small{font:9px Arial;color:#a1a38f}
+.serve-area{border-left:1px solid #e5e6da;padding-left:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+#cup{font-size:36px}
+#serve{background:#dba58a;border:0;border-radius:7px;padding:11px;color:white;width:100%}
+#cup-label{font-size:10px;color:#929b82;text-align:center;line-height:1.6}
+.shop-title{margin:10px 0 25px}
+.shop-title h2{font-size:27px;margin-top:12px}
+.shop-title p,.help p{color:#88957e;line-height:1.9;font-size:13px}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.shop-card{text-align:center}
+.swatch{height:140px;border-radius:10px;display:grid;place-items:center;font-size:65px;margin-bottom:20px}
+.shop-card p{color:#8a947f;font-size:12px;line-height:1.7}
+.help{padding:32px}
+.help h2{margin:15px 0 22px}
+footer{display:flex;justify-content:space-between;color:#a1a58f;font-size:10px;padding:25px 0}
+dialog{background:#fbfaf6;color:#304d41;border:1px solid #dce0d0;border-radius:20px;padding:35px;max-width:390px;width:90%;text-align:center}
+dialog::backdrop{background:#304d4180;backdrop-filter:blur(4px)}
+dialog h2{font-size:24px;margin:18px 0}
+dialog p{color:#88947b;line-height:1.9}
+.result-icon{font-size:48px}
+.secondary{border:0;background:none;margin-top:18px;color:#879579}
+#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#304d41;color:white;border-radius:25px;padding:13px 22px;font-size:13px;max-width:92%;text-align:center;z-index:10;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.show{opacity:1}
+[hidden]{display:none!important}
+@media(max-width:760px){
+header{padding:18px 14px;gap:10px}
+.logo{font-size:23px;white-space:nowrap}.logo b{margin-left:3px}
+nav{gap:12px}nav button{font-size:11px;white-space:nowrap}
+.wallet{font-size:12px;padding:10px}
+main{padding:26px 15px}
+h1{font-size:25px}
+.subtitle{font-size:11px}
+.layout{grid-template-columns:1fr}
+.scene{height:270px}
+.window{width:125px;left:20px}
+.sign{font-size:22px;left:42%}
+.shelf{right:17px;font-size:24px}
+.bench-grid{grid-template-columns:1fr 1fr;gap:20px 12px}
+.bench{padding:20px 14px}
+.choice{font-size:10px}
+.serve-area{grid-column:1/-1;border-left:0;border-top:1px solid #e5e6da;padding:15px 0 0;flex-direction:row;gap:15px}
+#serve{width:155px}
+#cup-label{max-width:100px}
+.shop-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">boba<span>club</span><b>✳</b></div>
+<nav aria-label="เมนูหลัก">
+<button data-tab="play" class="active">หน้าร้าน</button>
+<button data-tab="shop">แต่งร้าน</button>
+<button data-tab="help">วิธีเล่น</button>
+</nav>
+<div class="wallet">✦ <strong id="coins">0</strong></div>
+</header>
+<main>
+<div class="eyebrow">YOUR COZY LITTLE BUSINESS</div>
+<h1>ชงความสุข <span>เสิร์ฟความรวย.</span></h1>
+<p class="subtitle">จากร้านเล็ก ๆ สู่ร้านโปรดของทุกคน เริ่มต้นด้วยชาสักแก้ว 🧋</p>
+
+<section id="play-view">
+<div class="layout">
+<section class="cafe">
+<div class="scene-top">
+<span class="pill">✦ LITTLE BOBA SHOP</span>
+<button id="sound" aria-label="เปิดเสียง">♫</button>
+</div>
+<div class="scene">
+<div class="window"></div>
+<div class="sign">a little tea,<br>a lot of happy.</div>
+<div class="shelf">🌵 📚 🪴</div>
+<div class="plant">🪴</div>
+<div class="customer">
+<div class="speech" id="speech">ร้านน่ารักจัง พร้อมเปิดหรือยัง? ♡</div>
+<div class="hair"></div>
+<div class="face">• &nbsp; •<span>ᴗ</span></div>
+<div class="shirt"></div>
+</div>
+<div class="cup-decor">🧋</div>
+<div class="register">▣</div>
+<div class="counter">boba club<small>MADE WITH LOVE, SERVED WITH JOY</small></div>
+</div>
+<div class="scene-bottom">
+<span id="status">● ร้านพร้อมเปิดแล้ว</span>
+<span>EST. 2026 ✳</span>
+</div>
+</section>
+<aside class="panel">
+<h2>ออเดอร์ของคุณ</h2>
+<div class="timer"><span>◷ เวลาเหลือ</span><div><strong id="time">60</strong> วิ</div></div>
+<div class="ticket">
+<div class="ticket-icon">🧋</div>
+<div><small id="order-number">LET’S BREW!</small>
+<h3 id="order-tea">ชงแก้วแรกไปด้วยกัน</h3>
+<p id="order-topping">เปิดร้านเพื่อรับออเดอร์</p></div>
+</div>
+<div class="stats">
+<div><small>เสิร์ฟสำเร็จ</small><strong id="served">0</strong> แก้ว</div>
+<div><small>คอมโบต่อเนื่อง</small><strong id="combo">0</strong> 🔥</div>
+</div>
+<button id="start" class="primary">เปิดร้านกันเลย →</button>
+<p class="hint">แต่ละรอบ 60 วินาที • ไม่มีพลังงานจำกัด</p>
+</aside>
+</div>
+
+<section class="bench">
+<div class="eyebrow">THE BREWING STATION</div>
+<h2>แก้วนี้… เอาอะไรดี?</h2>
+<div class="bench-grid">
+<div class="ingredients">
+<h3><span>01</span> เลือกชาที่ใช่</h3>
+<div class="choices" id="teas"></div>
+</div>
+<div class="ingredients">
+<h3><span>02</span> เพิ่มความอร่อย</h3>
+<div class="choices" id="toppings"></div>
+</div>
+<div class="serve-area">
+<div id="cup">🧋</div>
+<button id="serve" disabled>เสิร์ฟเลย →</button>
+<small id="cup-label">เลือกชาและท็อปปิงก่อนนะ</small>
+</div>
+</div>
+</section>
+</section>
+
+<section id="shop-view" hidden>
+<div class="shop-title">
+<span class="eyebrow">MAKE IT YOURS</span>
+<h2>ร้านเล็ก ๆ ที่เป็นคุณ</h2>
+<p>ใช้เหรียญจากการชงชา ปลดล็อกสีใหม่ให้ร้านของคุณ</p>
+</div>
+<div class="shop-grid" id="shop-cards"></div>
+</section>
+
+<section id="help-view" hidden class="help">
+<span class="eyebrow">A LITTLE GUIDE</span>
+<h2>เถ้าแก่ใหม่ เริ่มตรงนี้ ♡</h2>
+<p>1. กดเปิดร้าน แต่ละรอบมีเวลา 60 วินาที</p>
+<p>2. ดูออเดอร์ เลือกชาและท็อปปิงให้ตรง แล้วกดเสิร์ฟ</p>
+<p>3. ได้แก้วละ 25 เหรียญ พร้อมโบนัสคอมโบสูงสุด 25 เหรียญ</p>
+<p>4. เสิร์ฟผิดไม่เสียเงิน แต่คอมโบจะเริ่มใหม่ ลองเลือกส่วนผสมใหม่ได้เลย</p>
+<p>5. ใช้เหรียญในหน้าแต่งร้านเพื่อซื้อธีม เปลี่ยนหน้าได้ระหว่างรอบ แต่เวลายังเดินต่อ</p>
+<p>ความคืบหน้าบันทึกในเบราว์เซอร์นี้ หากเบราว์เซอร์อนุญาตให้ใช้พื้นที่จัดเก็บ เหรียญใช้ในเกมเท่านั้น</p>
+</section>
+
+<footer><span>✳ a little cup of happiness.</span><span>ค่อย ๆ ชง ค่อย ๆ โต ♡</span></footer>
+</main>
+
+<dialog id="results">
+<div class="result-icon">🎉</div>
+<h2>วันนี้เก่งมาก เถ้าแก่!</h2>
+<p id="result-text"></p>
+<button class="primary" id="again">เปิดร้านอีกรอบ →</button>
+<button class="secondary" id="rest">พักก่อน ไปแต่งร้าน</button>
+</dialog>
+<div id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const teas=[
+{id:'thai',name:'ชาไทย',en:'Thai tea',icon:'🧡'},
+{id:'matcha',name:'มัทฉะ',en:'Matcha',icon:'🍵'},
+{id:'berry',name:'สตรอว์เบอร์รี',en:'Strawberry',icon:'🍓'}
+];
+const toppings=[
+{id:'boba',name:'ไข่มุก',icon:'🟤'},
+{id:'jelly',name:'เยลลี่',icon:'🧊'},
+{id:'cream',name:'ครีมชีส',icon:'☁️'}
+];
+const themes=[
+{name:'Original matcha',color:'#eee9dc',accent:'#3c6550',price:0,desc:'อบอุ่น เรียบง่าย สไตล์ออริจินัล'},
+{name:'Peach daydream',color:'#f0dace',accent:'#99674f',price:150,desc:'ละมุนเหมือนพีชในวันอากาศดี'},
+{name:'Lavender hour',color:'#e4def0',accent:'#75618c',price:300,desc:'ให้ทุกแก้วมีความฝันสีลาเวนเดอร์'}
+];
+let saved={};
+try{saved=JSON.parse(localStorage.getItem('boba-club-v1'))||{}}catch{}
+let coins=Number.isSafeInteger(saved.coins)&&saved.coins>=0?saved.coins:0;
+let owned=Array.isArray(saved.owned)?saved.owned.filter(x=>Number.isInteger(x)&&x>=0&&x<3):[0];
+if(!owned.includes(0))owned.push(0);
+let theme=owned.includes(saved.theme)?saved.theme:0;
+let running=false,remaining=60,served=0,combo=0,earned=0;
+let order=null,cup={},timer,deadline=0,toastTimer,sound=false,audio;
+
+function toast(message){
+ $('#toast').textContent=message;
+ $('#toast').classList.add('show');
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2500);
+}
+function save(){
+ try{
+  localStorage.setItem('boba-club-v1',JSON.stringify({coins,owned,theme}));
+ }catch{
+  toast('เบราว์เซอร์ไม่อนุญาตให้บันทึก แต่ยังเล่นรอบนี้ได้ครับ');
+ }
+}
+function tone(correct){
+ if(!sound)return;
+ try{
+  audio??=new (window.AudioContext||window.webkitAudioContext)();
+  audio.resume();
+  const oscillator=audio.createOscillator(),gain=audio.createGain();
+  oscillator.connect(gain);gain.connect(audio.destination);
+  oscillator.frequency.value=correct?660:220;
+  gain.gain.setValueAtTime(.06,audio.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.2);
+  oscillator.start();oscillator.stop(audio.currentTime+.2);
+ }catch{}
+}
+function render(){
+ $('#coins').textContent=coins.toLocaleString('th-TH');
+ $('#served').textContent=served;
+ $('#combo').textContent=combo;
+ $('#time').textContent=remaining;
+ $('#serve').disabled=!running||!cup.tea||!cup.topping;
+ $('#cup-label').textContent=cup.tea&&cup.topping
+  ?teas.find(t=>t.id===cup.tea).name+' + '+toppings.find(t=>t.id===cup.topping).name
+  :'เลือกชาและท็อปปิงก่อนนะ';
+ document.documentElement.style.setProperty('--wall',themes[theme].color);
+ document.documentElement.style.setProperty('--green',themes[theme].accent);
+ document.querySelectorAll('.choice').forEach(button=>{
+  const selected=cup[button.dataset.type]===button.dataset.id;
+  button.classList.toggle('selected',selected);
+  button.setAttribute('aria-pressed',String(selected));
+ });
+ $('#cup').style.filter=cup.tea==='berry'?'hue-rotate(310deg)'
+  :cup.tea==='matcha'?'hue-rotate(50deg)':'none';
+}
+function nextOrder(){
+ order={
+  tea:teas[Math.floor(Math.random()*teas.length)].id,
+  topping:toppings[Math.floor(Math.random()*toppings.length)].id
+ };
+ const tea=teas.find(t=>t.id===order.tea);
+ const topping=toppings.find(t=>t.id===order.topping);
+ $('#order-tea').textContent=tea.name;
+ $('#order-topping').textContent='+ '+topping.name;
+ $('#order-number').textContent='ORDER #'+String(served+1).padStart(3,'0');
+ $('#speech').textContent='ขอ'+tea.name+' ใส่'+topping.name+'ค่ะ ♡';
+}
+function tick(){
+ remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));
+ if(remaining===0){finish();return}
+ render();
+}
+function start(){
+ if(running)return;
+ $('#results').close();
+ running=true;remaining=60;served=0;combo=0;earned=0;cup={};
+ deadline=Date.now()+60000;
+ $('#start').disabled=true;
+ $('#start').textContent='กำลังเปิดร้าน…';
+ $('#status').textContent='● เปิดร้านแล้ว • ลูกค้ารออยู่';
+ nextOrder();render();
+ timer=setInterval(tick,200);
+}
+function finish(){
+ if(!running)return;
+ clearInterval(timer);running=false;remaining=0;
+ $('#start').disabled=false;
+ $('#start').textContent='เปิดร้านอีกรอบ →';
+ $('#status').textContent='● ปิดรอบแล้ว • พักจิบชาก่อน';
+ $('#speech').textContent='ขอบคุณนะคะ แล้วจะมาอีก! ♡';
+ $('#result-text').textContent='เสิร์ฟสำเร็จ '+served+' แก้ว ได้รับ '+earned+
+  ' เหรียญ • เหรียญทั้งหมด '+coins.toLocaleString('th-TH')+' เหรียญ';
+ render();save();
+ $('#results').showModal();
+}
+for(const [selector,list,type] of [
+ ['#teas',teas,'tea'],['#toppings',toppings,'topping']
+]){
+ list.forEach(item=>{
+  const button=document.createElement('button');
+  button.className='choice';
+  button.dataset.type=type;button.dataset.id=item.id;
+  button.innerHTML='<span class="emoji">'+item.icon+'</span>'+
+   item.name+'<small>'+(item.en||'TOPPING')+'</small>';
+  button.addEventListener('click',()=>{cup[type]=item.id;render()});
+  $(selector).append(button);
+ });
+}
+$('#serve').addEventListener('click',()=>{
+ if(!running||!cup.tea||!cup.topping)return;
+ if(Date.now()>=deadline){finish();return}
+ if(order.tea===cup.tea&&order.topping===cup.topping){
+  const amount=25+Math.min(combo,5)*5;
+  coins+=amount;earned+=amount;served++;combo++;
+  cup={};nextOrder();save();
+  toast('อร่อยที่สุด! +'+amount+' เหรียญ ✦');tone(true);
+ }else{
+  combo=0;
+  toast('อุ๊บ! ยังไม่ตรงออเดอร์ ลองชงใหม่อีกทีนะ');tone(false);
+ }
+ render();
+});
+function tab(name){
+ document.querySelectorAll('[data-tab]').forEach(button=>
+  button.classList.toggle('active',button.dataset.tab===name));
+ for(const n of ['play','shop','help'])$('#'+n+'-view').hidden=n!==name;
+ if(name==='shop')renderShop();
+}
+function renderShop(){
+ $('#shop-cards').replaceChildren();
+ themes.forEach((item,index)=>{
+  const card=document.createElement('article');card.className='shop-card';
+  card.innerHTML='<div class="swatch" style="background:'+item.color+'">🧋</div>'+
+   '<h2>'+item.name+'</h2><p>'+item.desc+'</p><button class="primary"></button>';
+  const button=card.querySelector('button');
+  button.textContent=theme===index?'ใช้งานอยู่ ✓':owned.includes(index)
+   ?'เลือกธีมนี้':'ปลดล็อก · '+item.price+' เหรียญ';
+  button.disabled=theme===index;
+  button.addEventListener('click',()=>{
+   if(!owned.includes(index)){
+    if(coins<item.price){
+     toast('อีก '+(item.price-coins)+' เหรียญก็ได้แล้ว ไปชงชากัน!');return;
+    }
+    coins-=item.price;owned.push(index);
+   }
+   theme=index;save();render();renderShop();toast('เปลี่ยนธีมร้านเรียบร้อย ♡');
+  });
+  $('#shop-cards').append(card);
+ });
+}
+document.querySelectorAll('[data-tab]').forEach(button=>
+ button.addEventListener('click',()=>tab(button.dataset.tab)));
+$('#start').addEventListener('click',start);
+$('#again').addEventListener('click',start);
+$('#rest').addEventListener('click',()=>{$('#results').close();tab('shop')});
+$('#sound').addEventListener('click',()=>{
+ sound=!sound;
+ $('#sound').textContent=sound?'♪':'♫';
+ $('#sound').setAttribute('aria-label',sound?'ปิดเสียง':'เปิดเสียง');
+ toast(sound?'เปิดเสียงแล้ว ♪':'ปิดเสียงแล้ว');tone(true);
+});
+document.addEventListener('visibilitychange',()=>{
+ if(running&&!document.hidden)tick();
+});
+render();
+</script>
+</body>
+</html>
